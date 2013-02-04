@@ -1,7 +1,7 @@
 $(document).ready(function () {
-	$('.tab-wrapper > div').click(function () {
+	$('.tab-wrapper > *').click(function () {
 		// Hide all content containers
-		$('.content-wrapper > div').removeClass('active');
+		$('.content-wrapper > *').removeClass('active');
 
 		// Shaw the corresponding content
 		var contentId = $(this).attr('content-id');
