@@ -1,0 +1,9 @@
+/*I will only provide the very basic styling neccesary to make the tab selection work properly. The rest is up to you.*/
+
+/*TAB ELEMENTS*/
+.tab-wrapper > div {cursor:pointer;}
+
+/*CONTENT ELEMENTS*/
+.content-wrapper > div {display: none;}
+
+.content-wrapper > .active {display: block;}
