@@ -19,6 +19,8 @@
 			#content-2 {background-color: blue; color: white;}
 			#content-3 {background-color: green; color: white;}
 			#content-4 {background-color: yellow;}
+
+			.tab-wrapper > .active {background-color: pink;}
 		</style>
 	</head>
 	<body>
@@ -27,7 +29,8 @@
 		<div class="tab-wrapper">
 
 			<!-- Each tab (as in the examples below) must store the corresponding content id in the "content-id" attribute -->
-			<div content-id="content-1">Tab 1</div>
+			<!-- Set the default tab's class to "active." This attribute MUST BE unique -->
+			<div content-id="content-1" class="active">Tab 1</div>
 			<div content-id="content-2">Tab 2</div>
 			<div content-id="content-3">Tab 3</div>
 			<div content-id="content-4">Tab 4</div>
@@ -36,7 +39,7 @@
 		<!-- All content sections must be wrapped in an element (preferrably a div) of class "content-wrapper" -->
 		<div class="content-wrapper">
 
-			<!-- Set the default content class to "active." This attribute MUST BE unique -->
+			<!-- Set the default content's class to "active." This attribute MUST BE unique -->
 			<div id="content-1" class="active">Content 1</div>
 			<div id="content-2">Content 2</div>
 			<div id="content-3">Content 3</div>
