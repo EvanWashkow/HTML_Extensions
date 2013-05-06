@@ -1,30 +1,29 @@
-// Function callbacks. These receive the object of the new tab as a parameter.
-var doBeforeTabSwitch;
-var doAfterTabSwitch;
+var tabManager = new Object();
 
-$(document).ready(function () {
-	$('.tab-wrapper > *').click(function () {
-		switchTabTo(this);
-	});
-});
+// *Function* callbacks. These receive the object of the new tab as a parameter.
+tabManager.doBeforeSwitch;
+tabManager.doAfterSwitch;
 
-function switchTabTo(newTab) {
+// Switch tabs
+tabManager.switch = function(newTab) {
 	// Perform needed actions before switching tabs
-	if (typeof doBeforeTabSwitch === 'function')
-		doBeforeTabSwitch(this);
+	if (typeof this.doBeforeSwitch === 'function')
+		this.doBeforeSwitch(newTab);
 
 	// Remove active class from all tabs and tab contents (this will remove selected tab styling and hide all content)
 	$('.tab-wrapper > *').removeClass('active');
 	$('.content-wrapper > *').removeClass('active');
 
-	// Set the clicked tab as active (this will style the selected tab)
-	$(newTab).addClass('active');
-
-	// Set the tab's corresponding content to active (this will show the content)
-	var contentId = $(newTab).attr('content-id');
-	$('#' + contentId).addClass('active');
+	// Set the tab and tab content to active (this will show selected tab styling and show all content)
+	$('#' + $(newTab).addClass('active').attr('content-id')).addClass('active');
 
 	// Perform needed actions after switching tabs.
-	if (typeof doAfterTabSwitch === 'function')
-		doAfterTabSwitch(this);
-}
+	if (typeof this.doAfterSwitch === 'function')
+		this.doAfterSwitch(newTab);
+};
+
+$(document).ready(function () {
+	$('.tab-wrapper > *').click(function () {
+		tabManager.switch(this);
+	});
+});
