@@ -1,6 +1,6 @@
 var tabManager = new Object();
 
-// *Function* callbacks. These receive the object of the new tab as a parameter.
+// *Function* callbacks. When called, these functions receive the new tab as a parameter.
 tabManager.doBeforeSwitch;
 tabManager.doAfterSwitch;
 
