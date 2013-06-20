@@ -9,7 +9,7 @@ function url_helper($path) {
 		$parents = explode('/', $_SERVER['REQUEST_URI']);
 
 		foreach ($parents as $parent) {
-			if ($parent)
+			if ($parent && !strstr($parent, '.php'))
 				$path_to_root = $path_to_root . '../';
 		}
 		$path = $path_to_root . substr($path, 1);
