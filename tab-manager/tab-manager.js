@@ -18,7 +18,8 @@ tabManager.switch = function(newTab) {
 	$(newTabContent).siblings().removeClass('active');
 
 	// Set the new tab and its content to active (this will show selected tab styling and show all content)
-	$(newTab).addClass('active')
+	// and store the new tab in the URL hash
+	location.hash = $(newTab).addClass('active').attr('content-id');
 	$(newTabContent).addClass('active');
 
 	// Perform needed actions after switching tabs.
@@ -27,6 +28,13 @@ tabManager.switch = function(newTab) {
 };
 
 $(document).ready(function () {
+	// On page load, scroll to, and open the hashed tab
+	if (location.hash) {
+		var newTab = $('[content-id="' + location.hash.replace('#', '') + '"]');
+		window.scrollTo(window.scrollX, $(newTab).parent().offset().top);
+		tabManager.switch(newTab);
+	}
+
 	$('.tab-wrapper > *').click(function () {
 		tabManager.switch(this);
 	});
