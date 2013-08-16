@@ -21,6 +21,13 @@
 				vertical-align: top;
 				width: 49.5%;
 			}
+			.tab-wrapper > *,
+			.content-wrapper > * {
+				padding: 3px;
+			}
+			.tab-wrapper > * {
+				display: block;
+			}
 			.tab-wrapper > .active {
 				background-color: pink;
 			}
@@ -51,10 +58,10 @@
 
 			<!-- Each tab (as in the examples below) must store the corresponding content id in the "content-id" attribute -->
 			<!-- Set the default tab's class to "active." This attribute MUST BE unique -->
-			<div content-id="content-1" class="active">Tab 1</div>
-			<div content-id="content-2">Tab 2</div>
-			<div content-id="content-3">Tab 3</div>
-			<div content-id="content-4">Tab 4</div>
+			<a content-id="content-1" class="active">Tab 1</a>
+			<a content-id="content-2">Tab 2</a>
+			<a content-id="content-3">Tab 3</a>
+			<a content-id="content-4">Tab 4</a>
 		</div>
 
 		<!-- All content sections must be wrapped in an element (preferrably a div) of class "content-wrapper" -->
@@ -71,10 +78,10 @@
 
 		<!-- Tab groupings, and their content, are independant of each other -->
 		<div class="tab-wrapper">
-			<div content-id="content-5" class="active">Tab 5</div>
-			<div content-id="content-6">Tab 6</div>
-			<div content-id="content-7">Tab 7</div>
-			<div content-id="content-8">Tab 8</div>
+			<a content-id="content-5" class="active">Tab 5</a>
+			<a content-id="content-6">Tab 6</a>
+			<a content-id="content-7">Tab 7</a>
+			<a content-id="content-8">Tab 8</a>
 		</div>
 		<div class="content-wrapper">
 			<div id="content-5" class="active">Content 5</div>
