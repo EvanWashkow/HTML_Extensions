@@ -7,7 +7,7 @@ tabManager.doAfterSwitch;
 // Switch tabs
 tabManager.switch = function(newTab) {
 	// Variables
-	var newTabContent = $('#' + $(newTab).attr('content-id'));
+	var newTabContent = $('#' + $(newTab).attr('content'));
 
 	// Perform needed actions before switching tabs
 	if (typeof this.doBeforeSwitch === 'function')

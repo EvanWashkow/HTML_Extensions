@@ -64,10 +64,10 @@
 
 			<!-- OPTIONAL:: -->
 			<!-- bookmark: open this tab on page load -->
-			<a content-id="content-1" bookmark="tab-1" class="active">Tab 1</a>
-			<a content-id="content-2" bookmark="tab-2">Tab 2</a>
-			<a content-id="content-3" bookmark="tab-3">Tab 3</a>
-			<a content-id="content-4" bookmark="tab-4">Tab 4</a>
+			<a content="content-1" bookmark="tab-1" class="active">Tab 1</a>
+			<a content="content-2" bookmark="tab-2">Tab 2</a>
+			<a content="content-3" bookmark="tab-3">Tab 3</a>
+			<a content="content-4" bookmark="tab-4">Tab 4</a>
 		</div>
 
 		<!-- All content sections must be wrapped in an element (preferrably a div) of class "content-wrapper" -->
@@ -86,10 +86,10 @@
 
 		<!-- Tab groupings, and their content, are independant of each other -->
 		<div class="tab-wrapper">
-			<a content-id="content-5" class="active">Tab 5</a>
-			<a content-id="content-6">Tab 6</a>
-			<a content-id="content-7">Tab 7</a>
-			<a content-id="content-8">Tab 8</a>
+			<a content="content-5" class="active">Tab 5</a>
+			<a content="content-6">Tab 6</a>
+			<a content="content-7">Tab 7</a>
+			<a content="content-8">Tab 8</a>
 		</div>
 		<div class="content-wrapper">
 			<div id="content-5" class="active">Content 5</div>
