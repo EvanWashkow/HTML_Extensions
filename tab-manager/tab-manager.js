@@ -23,8 +23,10 @@ tabManager.switch = function(newTab) {
 		.siblings()
 			.removeClass('active');
 
-	// Save the new tab in the URL hash
-	location.hash = $(newTab).attr('content-id');
+	// Save the tab bookmark in the URL hash
+	var tabBookmark = $(newTab).attr('bookmark');
+	if (typeof tabBookmark !== 'undefined')
+		location.hash = tabBookmark;
 
 	// Perform needed actions after switching tabs.
 	if (typeof this.doAfterSwitch === 'function')
@@ -34,7 +36,7 @@ tabManager.switch = function(newTab) {
 $(document).ready(function () {
 	// On page load, scroll to, and open the hashed tab
 	if (location.hash) {
-		var newTab = $('[content-id="' + location.hash.replace('#', '') + '"]');
+		var newTab = $('[bookmark="' + location.hash.replace('#', '') + '"]');
 		window.scrollTo(window.scrollX, $(newTab).parent().offset().top);
 		tabManager.switch(newTab);
 	}

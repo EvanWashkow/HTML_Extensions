@@ -61,10 +61,13 @@
 			<!-- REQUIRED:: -->
 			<!-- content-id: must store the corresponding content id -->
 			<!-- class="active": sets the default tab-this attribute MUST BE unique -->
-			<a content-id="content-1" class="active">Tab 1</a>
-			<a content-id="content-2">Tab 2</a>
-			<a content-id="content-3">Tab 3</a>
-			<a content-id="content-4">Tab 4</a>
+
+			<!-- OPTIONAL:: -->
+			<!-- bookmark: open this tab on page load -->
+			<a content-id="content-1" bookmark="tab-1" class="active">Tab 1</a>
+			<a content-id="content-2" bookmark="tab-2">Tab 2</a>
+			<a content-id="content-3" bookmark="tab-3">Tab 3</a>
+			<a content-id="content-4" bookmark="tab-4">Tab 4</a>
 		</div>
 
 		<!-- All content sections must be wrapped in an element (preferrably a div) of class "content-wrapper" -->
