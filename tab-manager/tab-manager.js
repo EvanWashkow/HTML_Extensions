@@ -13,14 +13,18 @@ tabManager.switch = function(newTab) {
 	if (typeof this.doBeforeSwitch === 'function')
 		this.doBeforeSwitch(newTab);
 
-	// Remove active class from the sibling tabs and their contents (this will remove selected tab styling and hide all content)
-	$(newTab).siblings().removeClass('active');
-	$(newTabContent).siblings().removeClass('active');
+	// Switch tabs
+	$(newTab)
+		.addClass('active')
+		.siblings()
+			.removeClass('active');
+	$(newTabContent)
+		.addClass('active')
+		.siblings()
+			.removeClass('active');
 
-	// Set the new tab and its content to active (this will show selected tab styling and show all content)
-	// and store the new tab in the URL hash
-	location.hash = $(newTab).addClass('active').attr('content-id');
-	$(newTabContent).addClass('active');
+	// Save the new tab in the URL hash
+	location.hash = $(newTab).attr('content-id');
 
 	// Perform needed actions after switching tabs.
 	if (typeof this.doAfterSwitch === 'function')
