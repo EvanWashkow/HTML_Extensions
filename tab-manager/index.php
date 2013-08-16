@@ -14,14 +14,34 @@
 
 		<!-- For demonstration purposes only -->
 		<style type="text/css">
-			#content-1, #content-2, #content-3, #content-4 {height: 500px;}
+			.tab-wrapper,
+			.content-wrapper {
+				display: inline-block;
+				margin-bottom: 50px;
+				vertical-align: top;
+				width: 49.5%;
+			}
+			.tab-wrapper > .active {
+				background-color: pink;
+			}
 
-			#content-1 {background-color: red; color: white;}
-			#content-2 {background-color: blue; color: white;}
-			#content-3 {background-color: green; color: white;}
-			#content-4 {background-color: yellow;}
-
-			.tab-wrapper > .active {background-color: pink;}
+			.content-wrapper > * {
+				height: 500px;
+			}
+			.content-wrapper > * {
+				background-color: red;
+				color: white;
+			}
+			.content-wrapper > *+* {
+				background-color: blue;
+			}
+			.content-wrapper > *+*+* {
+				background-color: green;
+			}
+			.content-wrapper > *+*+*+* {
+				background-color: yellow;
+				color: black;
+			}
 		</style>
 	</head>
 	<body>
@@ -45,6 +65,22 @@
 			<div id="content-2">Content 2</div>
 			<div id="content-3">Content 3</div>
 			<div id="content-4">Content 4</div>
+		</div>
+
+
+
+		<!-- Tab groupings, and their content, are independant of each other -->
+		<div class="tab-wrapper">
+			<div content-id="content-5" class="active">Tab 5</div>
+			<div content-id="content-6">Tab 6</div>
+			<div content-id="content-7">Tab 7</div>
+			<div content-id="content-8">Tab 8</div>
+		</div>
+		<div class="content-wrapper">
+			<div id="content-5" class="active">Content 5</div>
+			<div id="content-6">Content 6</div>
+			<div id="content-7">Content 7</div>
+			<div id="content-8">Content 8</div>
 		</div>
 	</body>
 </html>
