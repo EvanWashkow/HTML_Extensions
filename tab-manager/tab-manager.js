@@ -33,14 +33,23 @@ tabManager.switch = function(newTab) {
 		this.doAfterSwitch(newTab);
 };
 
-$(document).ready(function () {
+window.onload = function () {
 	// On page load, scroll to, and open the hashed tab
 	if (location.hash) {
 		var newTab = $('[bookmark="' + location.hash.replace('#', '') + '"]');
 		tabManager.switch(newTab);
 	}
 
-	$('.tab-wrapper > *').click(function () {
-		tabManager.switch(this);
-	});
-});
+	// For each tab group, identify the tabs
+	var tabGroups = document.getElementsByClassName('tab-wrapper');
+	for (var x = tabGroups.length - 1; x >= 0; x--) {
+		var tabs = tabGroups[x].children;
+
+		// For each tab, perform an action on click
+		for (var y = tabs.length - 1; y >= 0; y--) {
+			tabs[y].addEventListener('click', function() {
+				tabManager.switch(this);
+			});
+		};
+	}
+}
