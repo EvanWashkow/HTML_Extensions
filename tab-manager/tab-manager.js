@@ -37,7 +37,6 @@ $(document).ready(function () {
 	// On page load, scroll to, and open the hashed tab
 	if (location.hash) {
 		var newTab = $('[bookmark="' + location.hash.replace('#', '') + '"]');
-		window.scrollTo(window.scrollX, $(newTab).parent().offset().top);
 		tabManager.switch(newTab);
 	}
 
