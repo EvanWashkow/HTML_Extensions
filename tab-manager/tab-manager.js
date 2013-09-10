@@ -34,10 +34,10 @@ tabManager.switch = function(newTab) {
 };
 
 window.onload = function () {
-	var newTab = document.querySelectorAll('[bookmark="' + location.hash.substr(1) + '"]');
+	var newTab = document.querySelectorAll('[bookmark="' + location.hash.substr(1) + '"]')[0];
 
 	// On page load open the hashed tab
-	if (newTab.length && newTab[0].parentElement.className === 'tab-wrapper') {
+	if (newTab && newTab.parentElement.className === 'tab-wrapper') {
 		tabManager.switch(newTab);
 	}
 
