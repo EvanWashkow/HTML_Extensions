@@ -34,9 +34,10 @@ tabManager.switch = function(newTab) {
 };
 
 window.onload = function () {
-	// On page load, scroll to, and open the hashed tab
-	if (location.hash) {
-		var newTab = $('[bookmark="' + location.hash.replace('#', '') + '"]');
+	var newTab = document.querySelectorAll('[bookmark="' + location.hash.substr(1) + '"]');
+
+	// On page load open the hashed tab
+	if (newTab.length && newTab[0].parentElement.className === 'tab-wrapper') {
 		tabManager.switch(newTab);
 	}
 
