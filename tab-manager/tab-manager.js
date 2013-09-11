@@ -2,28 +2,24 @@
 Object.prototype.addClass = function(newClass) {
 
 	// Add class to an array of elements recursively
-	for (var i = this.length - 1; i >= 0; i--) {
+	for (var i = this.length - 1; i >= 0; i--)
 		this[i].addClass(newClass);
-	};
 
 	// Add the new class name to a singular object
-	if (typeof this.className ==='string' && !this.className.contains(newClass)) {
+	if (typeof this.className ==='string' && !this.className.contains(newClass))
 		this.className += ' ' + newClass;
-	}
 }
 
 // Remove class from an object
 Object.prototype.removeClass = function(oldClass) {
 
 	// Remove class from an array of elements recursively
-	for (var i = this.length - 1; i >= 0; i--) {
+	for (var i = this.length - 1; i >= 0; i--)
 		this[i].removeClass(oldClass);
-	};
 
 	// Remove the old class name from a singular object
-	if (typeof this.className ==='string') {
+	if (typeof this.className ==='string')
 		this.className = this.className.replace(oldClass, '').trimLeft().trimRight();
-	}
 }
 
 
