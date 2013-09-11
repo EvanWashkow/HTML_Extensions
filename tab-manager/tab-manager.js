@@ -12,6 +12,22 @@ Object.prototype.addClass = function(newClass) {
 	}
 }
 
+// Remove class from an object
+Object.prototype.removeClass = function(oldClass) {
+
+	// Remove class from an array of elements recursively
+	for (var i = this.length - 1; i >= 0; i--) {
+		this[i].removeClass(oldClass);
+	};
+
+	// Remove the old class name from a singular object
+	if (typeof this.className ==='string') {
+		this.className = this.className.replace(oldClass, '').trimLeft().trimRight();
+	}
+}
+
+
+
 var tabManager = new Object();
 
 // *Function* callbacks. When called, these functions receive the new tab as a parameter.
