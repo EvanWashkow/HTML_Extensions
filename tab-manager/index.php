@@ -4,9 +4,6 @@
 		<!-- REQUIRED:: tab-manager.css file -->
 		<link rel="stylesheet" href="tab-manager.css">
 
-		<!-- REQUIRED:: JQuery plugin -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-
 		<!-- REQUIRED:: tab-manager.js file -->
 		<script src="tab-manager.js"></script>
 
