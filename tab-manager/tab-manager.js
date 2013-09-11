@@ -5,21 +5,21 @@ tabManager.doBeforeSwitch;
 tabManager.doAfterSwitch;
 
 // Switch tabs
-tabManager.switch = function(newTab) {
+tabManager.switchTo = function(newTab) {
 	// Variables
-	var newTabContent = $('#' + $(newTab).attr('content'));
+	var newTabContent = document.getElementById(newTab.getAttribute('content'));
 
 	// Perform needed actions before switching tabs
 	if (typeof this.doBeforeSwitch === 'function')
 		this.doBeforeSwitch(newTab);
 
-	// Switch tabs
+	newTab.className += 'active';
+	newTabContent.className += 'active';
+
 	$(newTab)
-		.addClass('active')
 		.siblings()
 			.removeClass('active');
 	$(newTabContent)
-		.addClass('active')
 		.siblings()
 			.removeClass('active');
 
@@ -38,7 +38,7 @@ window.onload = function () {
 
 	// On page load open the hashed tab
 	if (newTab && newTab.parentElement.className === 'tab-wrapper') {
-		tabManager.switch(newTab);
+		tabManager.switchTo(newTab);
 	}
 
 	// For each tab group, identify the tabs
@@ -49,7 +49,7 @@ window.onload = function () {
 		// For each tab, perform an action on click
 		for (var y = tabs.length - 1; y >= 0; y--) {
 			tabs[y].addEventListener('click', function() {
-				tabManager.switch(this);
+				tabManager.switchTo(this);
 			});
 		};
 	}
