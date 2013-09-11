@@ -34,14 +34,13 @@ tabManager.doAfterSwitch;
 
 // Constants
 tabManager.constants = {
-	'activeClass'     : 'active',
-	'tabWrapperClass' : 'tab-wrapper'
+	'activeClass'       : 'active',
+	'bookmarkAttribute' : 'bookmark',
+	'tabWrapperClass'   : 'tab-wrapper'
 }
 
 // Switch tabs
 tabManager.switchTo = function(newTab) {
-
-	// Variables
 	var newTabContent = document.getElementById(newTab.getAttribute('content'));
 
 	// Perform needed actions before switching tabs
@@ -55,7 +54,7 @@ tabManager.switchTo = function(newTab) {
 	newTabContent.addClass(tabManager.constants.activeClass);
 
 	// Save the tab bookmark in the URL hash
-	var tabBookmark = $(newTab).attr('bookmark');
+	var tabBookmark = newTab.getAttribute(tabManager.constants.bookmarkAttribute);
 	if (typeof tabBookmark !== 'undefined')
 		location.hash = tabBookmark;
 
@@ -67,19 +66,16 @@ tabManager.switchTo = function(newTab) {
 
 
 window.onload = function () {
-	var newTab = document.querySelectorAll('[bookmark="' + location.hash.substr(1) + '"]')[0];
 
-	// On page load open the hashed tab
-	if (newTab && newTab.parentElement.className === tabManager.constants.tabWrapperClass) {
+	// On page load, open the tab corresponding to the URL hash
+	var newTab = document.querySelectorAll('[' + tabManager.constants.bookmarkAttribute + '="' + location.hash.substr(1) + '"]')[0];
+	if (newTab && newTab.parentElement.className === tabManager.constants.tabWrapperClass)
 		tabManager.switchTo(newTab);
-	}
 
-	// For each tab group, identify the tabs
+	// Add click handler for each tab in each tab group
 	var tabGroups = document.getElementsByClassName(tabManager.constants.tabWrapperClass);
 	for (var x = tabGroups.length - 1; x >= 0; x--) {
 		var tabs = tabGroups[x].children;
-
-		// For each tab, perform an action on click
 		for (var y = tabs.length - 1; y >= 0; y--) {
 			tabs[y].addEventListener('click', function() {
 				tabManager.switchTo(this);
