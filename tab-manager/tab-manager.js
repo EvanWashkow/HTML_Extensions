@@ -2,7 +2,8 @@ var tabManager = new Object();
 
 // Constants
 tabManager.constants = {
-	'activeClass' : 'active'
+	'activeClass'     : 'active',
+	'tabWrapperClass' : 'tab-wrapper'
 }
 
 
@@ -52,12 +53,12 @@ window.onload = function () {
 	var newTab = document.querySelectorAll('[bookmark="' + location.hash.substr(1) + '"]')[0];
 
 	// On page load open the hashed tab
-	if (newTab && newTab.parentElement.className === 'tab-wrapper') {
+	if (newTab && newTab.parentElement.className === tabManager.constants.tabWrapperClass) {
 		tabManager.switchTo(newTab);
 	}
 
 	// For each tab group, identify the tabs
-	var tabGroups = document.getElementsByClassName('tab-wrapper');
+	var tabGroups = document.getElementsByClassName(tabManager.constants.tabWrapperClass);
 	for (var x = tabGroups.length - 1; x >= 0; x--) {
 		var tabs = tabGroups[x].children;
 
