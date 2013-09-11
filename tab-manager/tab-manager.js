@@ -36,12 +36,13 @@ tabManager.doAfterSwitch;
 tabManager.constants = {
 	'activeClass'       : 'active',
 	'bookmarkAttribute' : 'bookmark',
+	'contentAttribute'  : 'content-id',
 	'tabWrapperClass'   : 'tab-wrapper'
 }
 
 // Switch tabs
 tabManager.switchTo = function(newTab) {
-	var newTabContent = document.getElementById(newTab.getAttribute('content'));
+	var newTabContent = document.getElementById(newTab.getAttribute(tabManager.constants.contentAttribute));
 
 	// Perform needed actions before switching tabs
 	if (typeof this.doBeforeSwitch === 'function')
