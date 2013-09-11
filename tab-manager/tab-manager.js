@@ -5,9 +5,11 @@ Object.prototype.addClass = function(newClass) {
 	for (var i = this.length - 1; i >= 0; i--)
 		this[i].addClass(newClass);
 
-	// Add the new class name to a singular object
-	if (typeof this.className ==='string' && !this.className.contains(newClass))
+	// Add the new class name to a singular object if the element does not already have the new class
+	if (typeof this.className ==='string' && (this.className.indexOf(newClass) < 0)) {
 		this.className += ' ' + newClass;
+		this.className.replace(/^\s+|\s+$/g, '');
+	}
 }
 
 // Remove class from an object
@@ -18,8 +20,8 @@ Object.prototype.removeClass = function(oldClass) {
 		this[i].removeClass(oldClass);
 
 	// Remove the old class name from a singular object
-	if (typeof this.className ==='string')
-		this.className = this.className.replace(oldClass, '').trimLeft().trimRight();
+	if (this.className)
+		this.className = this.className.replace(oldClass, '').replace(/^\s+|\s+$/g, '');
 }
 
 
@@ -61,6 +63,8 @@ tabManager.switchTo = function(newTab) {
 	if (typeof this.doAfterSwitch === 'function')
 		this.doAfterSwitch(newTab);
 };
+
+
 
 window.onload = function () {
 	var newTab = document.querySelectorAll('[bookmark="' + location.hash.substr(1) + '"]')[0];
