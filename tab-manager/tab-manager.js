@@ -35,7 +35,6 @@ tabManager.doAfterSwitch;
 // Constants
 tabManager.constants = {
 	'activeClass'       : 'active',
-	'bookmarkAttribute' : 'bookmark',
 	'contentAttribute'  : 'content-id',
 	'tabWrapperClass'   : 'tab-wrapper'
 }
@@ -54,10 +53,8 @@ tabManager.switchTo = function(newTab) {
 	newTab.addClass(tabManager.constants.activeClass);
 	newTabContent.addClass(tabManager.constants.activeClass);
 
-	// Save the tab bookmark in the URL hash
-	var tabBookmark = newTab.getAttribute(tabManager.constants.bookmarkAttribute);
-	if (typeof tabBookmark !== 'undefined')
-		location.hash = tabBookmark;
+	// Save the current tab content in the URL hash
+	location.hash = '_' + newTab.getAttribute(tabManager.constants.contentAttribute);
 
 	// Perform needed actions after switching tabs.
 	if (typeof this.doAfterSwitch === 'function')
@@ -69,7 +66,7 @@ tabManager.switchTo = function(newTab) {
 window.onload = function () {
 
 	// On page load, open the tab corresponding to the URL hash
-	var newTab = document.querySelectorAll('[' + tabManager.constants.bookmarkAttribute + '="' + location.hash.substr(1) + '"]')[0];
+	var newTab = document.querySelectorAll('[' + tabManager.constants.contentAttribute + '="' + location.hash.substr(2) + '"]')[0];
 	if (newTab && newTab.parentElement.className === tabManager.constants.tabWrapperClass)
 		tabManager.switchTo(newTab);
 
