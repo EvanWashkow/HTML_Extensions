@@ -1,11 +1,26 @@
 var tabManager = new Object();
 
+// Constants
+tabManager.constants = {
+	'activeClass' : 'active'
+}
+
+
+
 // *Function* callbacks. When called, these functions receive the new tab as a parameter.
 tabManager.doBeforeSwitch;
 tabManager.doAfterSwitch;
 
 // Switch tabs
 tabManager.switchTo = function(newTab) {
+
+	// Add a class to an element
+	function addClass(element, newClass) {
+		if (!element.className.contains(newClass)) {
+			element.className += newClass;
+		}
+	}
+
 	// Variables
 	var newTabContent = document.getElementById(newTab.getAttribute('content'));
 
@@ -13,15 +28,15 @@ tabManager.switchTo = function(newTab) {
 	if (typeof this.doBeforeSwitch === 'function')
 		this.doBeforeSwitch(newTab);
 
-	newTab.className += 'active';
-	newTabContent.className += 'active';
+	addClass(newTab,        tabManager.constants.activeClass);
+	addClass(newTabContent, tabManager.constants.activeClass);
 
 	$(newTab)
 		.siblings()
-			.removeClass('active');
+			.removeClass(tabManager.constants.activeClass);
 	$(newTabContent)
 		.siblings()
-			.removeClass('active');
+			.removeClass(tabManager.constants.activeClass);
 
 	// Save the tab bookmark in the URL hash
 	var tabBookmark = $(newTab).attr('bookmark');
