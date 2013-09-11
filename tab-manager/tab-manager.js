@@ -50,15 +50,11 @@ tabManager.switchTo = function(newTab) {
 	if (typeof this.doBeforeSwitch === 'function')
 		this.doBeforeSwitch(newTab);
 
+	// Switch tabs
+	newTab.parentNode.children.removeClass(tabManager.constants.activeClass);
+	newTabContent.parentNode.children.removeClass(tabManager.constants.activeClass);
 	newTab.addClass(tabManager.constants.activeClass);
 	newTabContent.addClass(tabManager.constants.activeClass);
-
-	$(newTab)
-		.siblings()
-			.removeClass(tabManager.constants.activeClass);
-	$(newTabContent)
-		.siblings()
-			.removeClass(tabManager.constants.activeClass);
 
 	// Save the tab bookmark in the URL hash
 	var tabBookmark = $(newTab).attr('bookmark');
