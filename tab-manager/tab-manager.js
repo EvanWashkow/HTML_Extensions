@@ -1,4 +1,22 @@
+// Add a class to an object
+Object.prototype.addClass = function(newClass) {
+
+	// Add class to an array of elements recursively
+	for (var i = this.length - 1; i >= 0; i--) {
+		this[i].addClass(newClass);
+	};
+
+	// Add the new class name to a singular object
+	if (typeof this.className ==='string' && !this.className.contains(newClass)) {
+		this.className += ' ' + newClass;
+	}
+}
+
 var tabManager = new Object();
+
+// *Function* callbacks. When called, these functions receive the new tab as a parameter.
+tabManager.doBeforeSwitch;
+tabManager.doAfterSwitch;
 
 // Constants
 tabManager.constants = {
@@ -6,21 +24,8 @@ tabManager.constants = {
 	'tabWrapperClass' : 'tab-wrapper'
 }
 
-
-
-// *Function* callbacks. When called, these functions receive the new tab as a parameter.
-tabManager.doBeforeSwitch;
-tabManager.doAfterSwitch;
-
 // Switch tabs
 tabManager.switchTo = function(newTab) {
-
-	// Add a class to an element
-	function addClass(element, newClass) {
-		if (!element.className.contains(newClass)) {
-			element.className += newClass;
-		}
-	}
 
 	// Variables
 	var newTabContent = document.getElementById(newTab.getAttribute('content'));
@@ -29,8 +34,8 @@ tabManager.switchTo = function(newTab) {
 	if (typeof this.doBeforeSwitch === 'function')
 		this.doBeforeSwitch(newTab);
 
-	addClass(newTab,        tabManager.constants.activeClass);
-	addClass(newTabContent, tabManager.constants.activeClass);
+	newTab.addClass(tabManager.constants.activeClass);
+	newTabContent.addClass(tabManager.constants.activeClass);
 
 	$(newTab)
 		.siblings()
