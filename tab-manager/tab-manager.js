@@ -34,9 +34,10 @@ tabManager.doAfterSwitch;
 
 // Constants
 tabManager.constants = {
-	'activeClass'       : 'active',
-	'contentAttribute'  : 'content-id',
-	'tabWrapperClass'   : 'tab-wrapper'
+	'activeClass'      : 'active',
+	'contentAttribute' : 'content-id',
+	'hashDivider'      : '/',
+	'tabWrapperClass'  : 'tab-wrapper'
 }
 
 // Switch tabs
@@ -48,13 +49,17 @@ tabManager.switchTo = function(newTab) {
 		this.doBeforeSwitch(newTab);
 
 	// Switch tabs
-	newTab.parentNode.children.removeClass(tabManager.constants.activeClass);
+	var newTabSiblings = newTab.parentNode.children;
+	newTabSiblings.removeClass(tabManager.constants.activeClass);
 	newTabContent.parentNode.children.removeClass(tabManager.constants.activeClass);
 	newTab.addClass(tabManager.constants.activeClass);
 	newTabContent.addClass(tabManager.constants.activeClass);
 
-	// Save the current tab content in the URL hash
-	location.hash = '_' + newTab.getAttribute(tabManager.constants.contentAttribute);
+	// Add the current tab content to the URL hash
+	for (var i = newTabSiblings.length - 1; i >= 0; i--)
+		location.hash = location.hash.replace(tabManager.constants.hashDivider + newTabSiblings[i].getAttribute(tabManager.constants.contentAttribute), '');
+	location.hash += tabManager.constants.hashDivider + newTab.getAttribute(tabManager.constants.contentAttribute);
+
 
 	// Perform needed actions after switching tabs.
 	if (typeof this.doAfterSwitch === 'function')
@@ -65,10 +70,13 @@ tabManager.switchTo = function(newTab) {
 
 window.onload = function () {
 
-	// On page load, open the tab corresponding to the URL hash
-	var newTab = document.querySelectorAll('[' + tabManager.constants.contentAttribute + '="' + location.hash.substr(2) + '"]')[0];
-	if (newTab && newTab.parentElement.className === tabManager.constants.tabWrapperClass)
-		tabManager.switchTo(newTab);
+	// On page load, open the tabs corresponding to the URL hash
+	var tabsToOpen = location.hash.split(tabManager.constants.hashDivider);
+	for (var i = tabsToOpen.length - 1; i >= 1; i--) {
+		var newTab = document.querySelectorAll('[' + tabManager.constants.contentAttribute + '="' + tabsToOpen[i] + '"]')[0];
+		if (newTab && newTab.parentElement.className === tabManager.constants.tabWrapperClass)
+			tabManager.switchTo(newTab);
+	};
 
 	// Add click handler for each tab in each tab group
 	var tabGroups = document.getElementsByClassName(tabManager.constants.tabWrapperClass);
