@@ -15,10 +15,10 @@
 		<!-- For Demo only -->
 		<link rel="stylesheet" href="css/style.css">
 
-		<title>960 Plus Grid System &mdash; Demo</title>
+		<title>960 Plus Grid Patch &mdash; Demo</title>
 	</head>
 	<body>
-		<h1>960 Plus Grid System</h1>
+		<h1>960 Plus Grid Patch</h1>
 		<div class="container_24">
 			<h2>
 				24 Column Grid
