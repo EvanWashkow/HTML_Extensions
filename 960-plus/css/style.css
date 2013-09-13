@@ -16,13 +16,39 @@ h1 {
 	margin: 0 0 50px;
 	padding-top: 50px;
 }
-.container_24 {
-	background: url('../images/24_col.gif') 0 0 #FFFFFF;
-}
-.grid_1 p, .grid_2 p, .grid_3 p, .grid_4 p, .grid_5 p, .grid_6 p, .grid_7 p, .grid_8 p, .grid_9 p, .grid_10 p, .grid_11 p, .grid_12 p, .grid_13 p, .grid_14 p, .grid_15 p, .grid_16 p, .grid_17 p, .grid_18 p, .grid_19 p, .grid_20 p, .grid_21 p, .grid_22 p, .grid_23 p, .grid_24 p {
-	border: 1px solid #AAAAAA;
+p {
 	height: 40px;
 	font-size: 12px;
 	line-height: 40px;
 	text-align: center;
+}
+.container_24 {
+	background: url('../images/24_col.gif') 0 0 #FFFFFF;
+}
+.v_top    > *+*,
+.v_center > *+*,
+.v_bottom > *+* {
+	height: 80px;
+	line-height: 80px;
+}
+
+
+/*Border definitions*/
+div.h_left,
+div.h_center,
+div.h_right,
+p {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border-width: 1px;
+	border-color: #AAAAAA
+}
+div.h_left,
+div.h_center,
+div.h_right {
+	border-style: dotted;
+}
+p {
+	border-style: solid;
 }
