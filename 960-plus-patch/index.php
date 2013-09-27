@@ -5,10 +5,10 @@
 		<link rel="stylesheet" href="css/960_24_col.css">
 
 		<!--------------------------------------------------------------->
-		<!-- 960 GRID PLUS PATCH																			 -->
-		<!--																													 -->
+		<!-- 960 GRID PLUS PATCH                                       -->
+		<!--                                                           -->
 		<!-- Patch is applied to a pre-existing 960 grid installation. -->
-		<!-- Note: this is not a standalone grid system								-->
+		<!-- Note: this is not a standalone grid system                -->
 		<!--------------------------------------------------------------->
 		<link rel="stylesheet" href="960_plus_patch.css">
 
