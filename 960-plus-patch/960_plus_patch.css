@@ -2,7 +2,7 @@
 	font-size: 0;
 }
 .grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, .grid_16, .grid_17, .grid_18, .grid_19, .grid_20, .grid_21, .grid_22, .grid_23, .grid_24,
-.h_left, .h_center, .h_right
+.h_left, .h_center, .h_right,
 .v_top > *, .v_center > *, .v_bottom,
 .v_top:before, .v_center:before, .v_bottom:before {
 	display: inline-block;
