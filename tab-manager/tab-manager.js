@@ -74,7 +74,7 @@ window.onload = function () {
 	var tabsToOpen = location.hash.split(tabManager.constants.hashDivider);
 	for (var i = tabsToOpen.length - 1; i >= 1; i--) {
 		var newTab = document.querySelectorAll('[' + tabManager.constants.contentAttribute + '="' + tabsToOpen[i] + '"]')[0];
-		if (newTab && newTab.parentElement.className === tabManager.constants.tabWrapperClass)
+		if (newTab && (newTab.parentElement.className.indexOf(tabManager.constants.tabWrapperClass) >= 0))
 			tabManager.switchTo(newTab);
 	};
 
