@@ -34,10 +34,10 @@ tabManager.doAfterSwitch;
 
 // Constants
 tabManager.constants = {
-	'activeClass'      : 'active',
+	'activeClassName'      : 'active',
 	'contentAttribute' : 'content-id',
 	'hashDivider'      : '/',
-	'tabWrapperClass'  : 'tab-wrapper'
+	'tabWrapperClassName'  : 'tab-wrapper'
 }
 
 // Switch tabs
@@ -50,10 +50,10 @@ tabManager.switchTo = function(newTab) {
 
 	// Switch tabs
 	var newTabSiblings = newTab.parentNode.children;
-	newTabSiblings.removeClass(tabManager.constants.activeClass);
-	newTabContent.parentNode.children.removeClass(tabManager.constants.activeClass);
-	newTab.addClass(tabManager.constants.activeClass);
-	newTabContent.addClass(tabManager.constants.activeClass);
+	newTabSiblings.removeClass(tabManager.constants.activeClassName);
+	newTabContent.parentNode.children.removeClass(tabManager.constants.activeClassName);
+	newTab.addClass(tabManager.constants.activeClassName);
+	newTabContent.addClass(tabManager.constants.activeClassName);
 
 	// Add the current tab content to the URL hash
 	for (var i = newTabSiblings.length - 1; i >= 0; i--)
@@ -74,12 +74,12 @@ window.onload = function () {
 	var tabsToOpen = location.hash.split(tabManager.constants.hashDivider);
 	for (var i = tabsToOpen.length - 1; i >= 1; i--) {
 		var newTab = document.querySelectorAll('[' + tabManager.constants.contentAttribute + '="' + tabsToOpen[i] + '"]')[0];
-		if (newTab && (newTab.parentElement.className.indexOf(tabManager.constants.tabWrapperClass) >= 0))
+		if (newTab && (newTab.parentElement.className.indexOf(tabManager.constants.tabWrapperClassName) >= 0))
 			tabManager.switchTo(newTab);
 	};
 
 	// Add click handler for each tab in each tab group
-	var tabGroups = document.getElementsByClassName(tabManager.constants.tabWrapperClass);
+	var tabGroups = document.getElementsByClassName(tabManager.constants.tabWrapperClassName);
 	for (var x = tabGroups.length - 1; x >= 0; x--) {
 		var tabs = tabGroups[x].children;
 		for (var y = tabs.length - 1; y >= 0; y--) {
