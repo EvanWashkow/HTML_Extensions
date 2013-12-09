@@ -1,6 +1,6 @@
 /* All you have to do is include this into your page. The script will take care of making IE compatible with any element that is using placeholders. */
 
-$(document).ready(function () {
+window.onload = function () {
   if ($.browser.msie) {
     $('body [placeholder]').each(function (index) {
       $(this)
@@ -15,4 +15,4 @@ $(document).ready(function () {
         });
     });
   }
-});
+}
