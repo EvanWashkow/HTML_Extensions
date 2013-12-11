@@ -2,17 +2,18 @@
 
 window.onload = function () {
 	if (navigator.appName === 'Microsoft Internet Explorer') {
-		$('body [placeholder]').each(function (index) {
-			$(this)
-				.attr('value', $(this).attr('placeholder'))
-				.focusin(function () {
-					if ($(this).attr('value') === $(this).attr('placeholder'))
-						$(this).attr('value', '');
-				})
-				.focusout(function () {
-					if ($(this).attr('value') === '')
-						$(this).attr('value', $(this).attr('placeholder'));
-				});
-		});
+		var placeholderElements = document.querySelectorAll('body [placeholder]');
+		for (var i = placeholderElements.length - 1; i >= 0; i--) {
+			var element = placeholderElements[i];
+			element.setAttribute('value', placeholderElements[i].getAttribute('placeholder'));
+			element.addEventListener('focus', function() {
+				if (this.getAttribute('value') === this.getAttribute('placeholder'))
+					this.setAttribute('value', '');
+			});
+			element.addEventListener('blur', function() {
+				if (this.getAttribute('value') === '')
+					this.setAttribute('value', this.getAttribute('placeholder'));
+			});
+		}
 	}
 }
