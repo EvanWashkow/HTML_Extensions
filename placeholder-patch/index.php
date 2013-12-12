@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>IE Placeholder patch Demo</title>
-	<script src="ie-placeholder.js"></script>
+	<script src="placeholder-patch.js"></script>
 </head>
 <body>
 	<form action="">
