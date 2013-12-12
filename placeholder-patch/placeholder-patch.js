@@ -1,4 +1,4 @@
-/* All you have to do is include this into your page. The script will take care of making IE compatible with any element that is using placeholders. */
+/* All you have to do is include this into your page. The script will ensure all browsers display a placeholder--even those that don't support it. */
 
 window.onload = function () {
 
